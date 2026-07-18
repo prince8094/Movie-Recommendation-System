@@ -155,27 +155,48 @@ if st.button("🚀 Recommend"):
 
     st.subheader("🎯 Recommended Movies")
 
-    cols = st.columns(len(recs))
+    st.markdown("---")
+    st.subheader(f"🎬 Because you liked **{movie}**")
 
-    for col, rec in zip(cols, recs):
+# Display 3 cards per row
+    for i in range(0, len(recs), 3):
 
-      with col:
+      cols = st.columns(3)
 
-        st.image(
-            rec["Poster"],
-            use_container_width=True
-        )
+      for col, rec in zip(cols, recs[i:i+3]):
 
-        st.markdown(
-         f"### {rec['Movie']} ({rec['Release Year']})"
-        )
+        with col:
 
-        st.caption(f"⭐ {rec['Rating']:.1f}/10")
+            st.markdown(
+              f"""
+                <div style="display:flex; justify-content:center;">
+                <img src="{rec['Poster']}"
+                width="180"
+                height="270"
+                style="
+                 border-radius:12px;
+                 object-fit:cover;
+                 box-shadow:0px 4px 10px rgba(0,0,0,0.4);
+                      ">
+               </div>
+                """,
+                unsafe_allow_html=True
+            )
 
-        st.caption(f"🎭 {rec['Genre']}")
+            st.markdown(
+                f"### {rec['Movie']}"
+            )
 
-        st.caption(f"📅 {rec['Release Year']}")
+            st.caption(f"📅 {rec['Release Year']}")
 
-        st.progress(float(rec["Similarity"]) / 100)
+            st.write(f"⭐ **{rec['Rating']:.1f}/10**")
 
-        st.write(f"**{rec['Similarity']:.1f}% Match**")
+            st.write(f"🎭 {rec['Genre']}")
+
+            st.write(f"📈 Popularity: {rec['Popularity']:.2f}")
+
+            progress = float(rec["Similarity"]) / 100
+
+            st.progress(progress)
+
+            st.success(f"🎯 {rec['Similarity']:.1f}% Match")
