@@ -134,6 +134,7 @@ num = st.slider(
 # Recommendation Button
 # --------------------------------------------------
 
+
 if st.button("🚀 Recommend"):
 
     if movie_input is None:
@@ -152,36 +153,29 @@ if st.button("🚀 Recommend"):
         st.warning("No highly similar movies found.")
         st.stop()
 
-    for rec in recs:
+    st.subheader("🎯 Recommended Movies")
 
-        col1, col2 = st.columns([1, 3])
+    cols = st.columns(len(recs))
 
-        with col1:
+    for col, rec in zip(cols, recs):
 
-            st.image(
-                rec["Poster"],
-                use_container_width=True
-            )
+      with col:
 
-        with col2:
+        st.image(
+            rec["Poster"],
+            use_container_width=True
+        )
 
-            st.subheader(rec["Movie"])
+        st.markdown(
+         f"### {rec['Movie']} ({rec['Release Year']})"
+        )
 
-            st.write(f"🎭 **Genre:** {rec['Genre']}")
+        st.caption(f"⭐ {rec['Rating']:.1f}/10")
 
-            st.write(f"⭐ **Rating:** {rec['Rating']:.1f}/10")
+        st.caption(f"🎭 {rec['Genre']}")
 
-            st.write(f"📈 **Popularity:** {rec['Popularity']:.2f}")
+        st.caption(f"📅 {rec['Release Year']}")
 
-            st.write(f"📅 **Release Year:** {rec['Release Year']}")
+        st.progress(float(rec["Similarity"]) / 100)
 
-            progress = float(min(rec["Similarity"] / 100.0, 1.0))
-
-            st.progress(progress)
-
-            st.metric(
-                label="🎯 Match Score",
-                value=f"{rec['Similarity']:.2f}%"
-            )
-
-        st.divider()
+        st.write(f"**{rec['Similarity']:.1f}% Match**")
