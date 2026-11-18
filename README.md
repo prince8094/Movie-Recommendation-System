@@ -15,7 +15,7 @@ It's built as a Streamlit app. Search for a movie and you get back a ranked list
 
 ## Screenshots
 
-[🎥 Watch project demo](https://prince8094.github.io/Movie-Recommendation-System/demo.html)
+![Project demo](Screen_Recording/S1.gif)
 
 ## Why not TF-IDF
 
