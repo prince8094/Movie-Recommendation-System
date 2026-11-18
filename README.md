@@ -13,7 +13,7 @@ This is a movie recommendation app that ranks results by semantic similarity rat
 
 It's built as a Streamlit app. Search for a movie and you get back a ranked list of similar titles, each with poster, rating, genre, popularity, release year, and a match percentage.
 
-## Screenshots
+## Screenshots Recording
 
 <video controls width="100%" src="Screen_Recording/S1.mp4" alt="Project demo"></video>
 
