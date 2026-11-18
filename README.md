@@ -15,13 +15,7 @@ It's built as a Streamlit app. Search for a movie and you get back a ranked list
 
 ## Screenshots
 
-**Home page**
-
-(add screenshot here)
-
-**Recommendation output**
-
-(add screenshot here)
+<video controls width="100%" src="Screen_Recording/S1.mp4" alt="Project demo"></video>
 
 ## Why not TF-IDF
 
